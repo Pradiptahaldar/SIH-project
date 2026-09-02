@@ -8,3 +8,39 @@
 8. Accessibility
 9. Public Administration
 10. Rural Livelihoods
+                POST /analyze
+                     │
+             Challenge Submission
+                     │
+       ┌─────────────┼─────────────┐
+       ↓             ↓             ↓
+     Text          Image      Audio/Video
+       │             │             │
+       ↓             ↓             ↓
+   NLP module    Vision module   Speech/Video
+       │             │             │
+       └─────────────┼─────────────┘
+                     ↓
+              Unified Analysis
+                     │
+          ┌──────────┼──────────┐
+          ↓          ↓          ↓
+      Category    Priority   Duplicate
+USER SUBMISSION
+      │
+      ├── Text ───────────────┐
+      │                       │
+      ├── Image → description ┤
+      │                       │
+      ├── Audio → transcript ─┤
+      │                       ↓
+      └── Video → analysis ──→ COMBINED TEXT
+                              │
+                              ↓
+                         CATEGORIZER
+                              │
+                              ↓
+                   Category + Confidence
+
+
+uvicorn app.main:app --reload
