@@ -11,6 +11,8 @@ def root():
     return {"message": "ai service running"}
 @app.post("/categorize")
 def categorize(request: ChallengeRequest):
-    category = classify_challenge(request.challenge)
+    category, scores, confidence = classify_challenge(request.challenge)
 
-    return {"catefory": category}
+    return {"category": category,
+            "scores": scores,
+            "confidence": confidence}
