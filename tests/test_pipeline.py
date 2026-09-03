@@ -31,3 +31,6 @@ print(result["priority"])
 
 print("\nSIMILARITY:")
 print(result["similarity"])
+
+print("\nEXPLANATION:")
+print(result["explanation"])
