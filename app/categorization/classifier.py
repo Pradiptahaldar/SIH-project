@@ -1,115 +1,254 @@
 CATEGORIES = {
-    "Education": {
-        "digital education": 3,
-        "online learning": 3,
-        "school": 1,
-        "student": 1,
-        "education": 2,
-        "teacher": 1,
-        "college": 1,
-        "university": 1,
-        "learning": 1,
-        "classroom": 1,
+    "disaster_management": {
+        "label": "Disaster Management",
+        "keywords": {
+            "disaster": 3,
+            "disaster management": 4,
+            "emergency": 3,
+            "flood": 3,
+            "drought": 3,
+            "lightning": 3,
+            "fire": 2,
+            "road accident": 3,
+            "accident": 2,
+            "rescue": 2,
+            "relief": 2,
+            "emergency response": 4,
+            "natural disaster": 4,
+        }
     },
-    "Healthcare": {
-        "healthcare": 3,
-        "health care": 3,
-        "hospital": 2,
-        "medical": 2,"medicine": 2,
-        "doctor": 1,
-        "patient": 1,
-        "clinic": 1,
-        "health": 1,
+
+    "agriculture": {
+        "label": "Agriculture & Food Security",
+        "keywords": {
+            "agriculture": 3,
+            "farming": 3,
+            "farmer": 3,
+            "farmers": 3,
+            "crop": 2,
+            "crops": 2,
+            "food security": 4,
+            "fertilizer": 2,
+            "harvest": 2,
+            "irrigation": 2,
+            "soil": 2,
+            "seeds": 2,
+            "seed": 2,
+            "pesticide": 2,
+            "livestock": 2,
+            "cultivation": 2,
+            "agricultural": 3,
+        }
     },
-    "Agriculture": {
-        "agriculture": 3,
-        "farming": 3,
-        "farmer": 2,"crop": 2,
-        "fertilizer": 2,"harvest": 2,
-        "irrigation": 1,
+
+    "health": {
+        "label": "Health & Medical",
+        "keywords": {
+            "health": 2,
+            "healthcare": 3,
+            "health care": 3,
+            "medical": 3,
+            "medicine": 3,
+            "hospital": 3,
+            "doctor": 2,
+            "patient": 2,
+            "clinic": 2,
+            "disease": 2,
+            "treatment": 2,
+            "diagnosis": 2,
+            "ambulance": 3,
+            "maternal health": 4,
+            "child health": 4,
+        }
     },
-    "Water Resources": {
-        "water resources": 3,
-        "drinking water": 3,"water supply": 3,
-        "groundwater": 2,"river": 2,"lake": 2,"water": 1,
-        "irrigation": 1,
+
+    "education": {
+        "label": "Education",
+        "keywords": {
+            "education": 3,
+            "digital education": 4,
+            "online learning": 4,
+            "school": 2,
+            "student": 2,
+            "students": 2,
+            "teacher": 2,
+            "teachers": 2,
+            "college": 2,
+            "university": 2,
+            "learning": 2,
+            "classroom": 2,
+            "literacy": 2,
+            "teaching": 2,
+            "school infrastructure": 4,
+        }
     },
-    "Environment": {"environment": 2,
-        "pollution": 3,
-        "air quality": 3,
-        "deforestation": 3,
-        "forest": 2,
-        "climate": 2,
-        "waste": 2,
+
+    "water_sanitation": {
+        "label": "Water & Sanitation",
+        "keywords": {
+            "water": 2,
+            "water supply": 4,
+            "drinking water": 4,
+            "tap water": 4,
+            "sanitation": 4,
+            "sewage": 3,
+            "sewerage": 3,
+            "groundwater": 3,
+            "water shortage": 4,
+            "water scarcity": 4,
+            "clean water": 4,
+            "toilet": 2,
+            "wastewater": 3,
+            "irrigation": 1,
+        }
     },
-    "Energy": {
-        "renewable energy": 3,
-        "renewable": 2,
-        "electricity": 2,
-        "solar": 2,
-        "power": 2,
-        "energy": 2,
-        "grid": 1,
+
+    "infrastructure": {
+        "label": "Roads & Infrastructure",
+        "keywords": {
+            "infrastructure": 4,
+            "road": 3,
+            "roads": 3,
+            "bridge": 3,
+            "highway": 3,
+            "street": 2,
+            "road connectivity": 4,
+            "transport infrastructure": 4,
+            "public infrastructure": 4,
+            "construction": 2,
+            "building": 1,
+        }
     },
-    "Urban Development": {
-        "urban development": 3,
-        "traffic": 2,
-        "drainage": 2,
-        "transport": 2,
-        "city": 1,
-        "urban": 2,
-        "road": 1,
-        "street": 1,
+
+    "environment": {
+        "label": "Environment & Forest",
+        "keywords": {
+            "environment": 3,
+            "environmental": 3,
+            "pollution": 4,
+            "air pollution": 4,
+            "air quality": 4,
+            "water pollution": 4,
+            "deforestation": 4,
+            "forest": 3,
+            "forests": 3,
+            "forest fire": 4,
+            "climate": 3,
+            "climate change": 4,
+            "waste": 2,
+            "plastic waste": 4,
+            "biodiversity": 3,
+            "ecosystem": 3,
+        }
     },
-    "Accessibility": {
-        "accessibility": 3,
-        "wheelchair": 3,
-        "disability": 3,
-        "disabled": 2,
-        "blind": 2,
-        "deaf": 2,
-        "mobility": 2,
-        "accessible": 2,
+
+    "mining": {
+        "label": "Mining & Industrial Safety",
+        "keywords": {
+            "mining": 4,
+            "mine": 3,
+            "miner": 3,
+            "coal mining": 4,
+            "coal mine": 4,
+            "mining accident": 5,
+            "mine accident": 5,
+            "industrial": 3,
+            "industrial accident": 5,
+            "industrial safety": 5,
+            "chemical accident": 5,
+            "mines": 3,
+            "coalfield": 3,
+            "land subsidence": 4,
+        }
     },
-    "Public Administration": {
-        "public administration": 3,
-        "public service": 3,
-        "government": 2,
-        "municipality": 2,
-        "administration": 2,
-        "citizen": 1,
-        "official": 1,
-        "document": 1,
+
+    "tribal_welfare": {
+        "label": "Tribal & Social Welfare",
+        "keywords": {
+            "tribal": 4,
+            "tribal welfare": 5,
+            "tribal community": 4,
+            "tribal communities": 4,
+            "scheduled tribe": 4,
+            "scheduled tribes": 4,
+            "social welfare": 4,
+            "social inclusion": 3,
+            "welfare": 2,
+            "marginalized": 3,
+            "marginalised": 3,
+            "vulnerable community": 3,
+            "vulnerable communities": 3,
+        }
     },
-    "Rural Livelihoods": {
-        "rural livelihoods": 3,
-        "rural employment": 3,
-        "livelihood": 3,
-        "rural": 2,
-        "village": 2,
-        "employment": 2,
-        "self employment": 2,
-        "income": 1,
+
+    "employment": {
+        "label": "Employment & Skill Development",
+        "keywords": {
+            "employment": 3,
+            "unemployment": 4,
+            "job": 2,
+            "jobs": 2,
+            "employment opportunity": 4,
+            "employment opportunities": 4,
+            "skill development": 5,
+            "vocational training": 4,
+            "skill training": 4,
+            "training": 2,
+            "livelihood": 3,
+            "livelihoods": 3,
+            "self employment": 4,
+            "self-employment": 4,
+            "workforce": 3,
+            "career": 2,
+            "income": 2,
+        }
     },
+
+    "urban_development": {
+        "label": "Urban Development & Housing",
+        "keywords": {
+            "urban": 3,
+            "urban development": 5,
+            "urbanization": 4,
+            "urbanisation": 4,
+            "city": 2,
+            "cities": 2,
+            "housing": 4,
+            "urban housing": 5,
+            "municipal": 3,
+            "municipality": 3,
+            "drainage": 3,
+            "urban drainage": 5,
+            "traffic": 3,
+            "public transport": 3,
+            "smart city": 4,
+            "unplanned growth": 4,
+        }
+    },
+
+    "other": {
+        "label": "Other",
+        "keywords": {}
+    }
 }
-def classify_challenge(challenge: str) -> str:
+def classify_challenge(challenge: str):
     text = challenge.lower()
     scores = {}
-    for category, keywords in CATEGORIES.items():
+    for category, data in CATEGORIES.items():
         score = 0
-        for keyword, weight in keywords.items():
+        for keyword, weight in data["keywords"].items():
             if keyword in text:
                 score += weight
         scores[category] = score
-    best_score= max(scores.values())
-    total_score= sum(scores.values())
-    if best_score==0:
-        return "Unknown" , scores, 0.0
-    confidence= best_score/ total_score
-    top_categories=[category
-                    for category, score in scores.items()
-                    if score == best_score
-                    ]
-    best_category= top_categories[0]
+    best_score = max(scores.values())
+    if best_score == 0:
+        return "other", scores, 0.0
+    total_score = sum(scores.values())
+    confidence = best_score / total_score
+    top_categories = [
+        category
+        for category, score in scores.items()
+        if score == best_score
+    ]
+    best_category = top_categories[0]
     return best_category, scores, confidence
-    

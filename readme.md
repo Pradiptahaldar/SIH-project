@@ -44,3 +44,6 @@ USER SUBMISSION
 
 
 uvicorn app.main:app --reload
+{
+  "challenge": "Many students in rural areas do not have access to quality digital education."
+}
