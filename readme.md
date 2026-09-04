@@ -49,3 +49,6 @@ uvicorn app.main:app --reload
 }
 python -m tests.test_pipeline
 python -m tests.test_multimodal
+python tests/test_multimodal_pipeline.py
+python -m tests.test_multimodal_pipeline
+Many rural communities face delays in adopting solar energy because there are not enough trained workers available to properly install and maintain solar panel systems.

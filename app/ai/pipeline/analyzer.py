@@ -26,7 +26,7 @@ def analyze_challenge(
     category_result = classify_semantic(unified_text)
 
     # Problem extraction
-    extraction_result = extract_problem(unified_text)
+    extraction_result = extract_problem(challenge)
 
     # Priority calculation
     priority_result = calculate_priority(

@@ -1,7 +1,5 @@
 from fastapi import FastAPI, UploadFile, File
-from pydantic import BaseModel
 
-from app.processing.text import process_text
 from app.processing.image import process_image
 from app.processing.audio import process_audio
 from app.ai.pipeline.analyzer import analyze_challenge
@@ -13,27 +11,37 @@ app = FastAPI(
     version="1.0.0"
 )
 
-
-class ChallengeRequest(BaseModel):
-    challenge: str
-    # image: str | None = None
-    # audio: str | None = None
-    # video: str | None = None
-
-
 @app.get("/")
 def root():
     return {"message": "ai service running"}
 
-
-@app.post("/categorize")
-def categorize(request: ChallengeRequest):
-    return process_text(request.challenge)
-
-
 @app.post("/analyze")
-def analyze(request: ChallengeRequest):
-    return analyze_challenge(request.challenge)
+async def analyze(
+    challenge: str,
+    image: UploadFile | None = File(None),
+    audio: UploadFile | None = File(None)
+):
+    image_result = None
+    audio_result = None
+
+    if image:
+        image_data = await image.read()
+        image_result = process_image(image_data)
+
+    if audio:
+        audio_data = await audio.read()
+        audio_path = f"temp_{audio.filename}"
+
+        with open(audio_path, "wb") as f:
+            f.write(audio_data)
+
+        audio_result = process_audio(audio_path)
+
+    return analyze_challenge(
+        challenge=challenge,
+        image_result=image_result,
+        audio_result=audio_result
+    )
 
 
 @app.post("/upload-image")

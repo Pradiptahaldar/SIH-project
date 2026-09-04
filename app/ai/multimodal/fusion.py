@@ -65,21 +65,15 @@ def build_unified_text(
         if isinstance(text_result, str):
             parts.append(text_result)
 
-    # Image information
     if image_result and isinstance(image_result, dict):
         analysis = image_result.get("analysis")
 
-        if analysis:
-            if isinstance(analysis, dict):
-                category = analysis.get("category")
+        if analysis and isinstance(analysis, dict):
+            category = analysis.get("category")
 
-                if category:
-                    parts.append(
-                        f"Visual evidence indicates {category}."
-                    )
-            else:
+            if category:
                 parts.append(
-                    f"Visual evidence: {analysis}"
+                    f"Image context: {category}"
                 )
 
     # Audio transcription

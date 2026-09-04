@@ -104,6 +104,18 @@ CATEGORIES = {
             "traffic, urban flooding and problems caused by rapid urbanization",
         ],
     },
+    "energy": {
+    "label": "Energy",
+    "prototypes": [
+        "problems related to energy and electricity",
+        "challenges involving solar power and renewable energy",
+        "issues with electricity access and power supply",
+        "problems with solar panels and energy generation",
+        "challenges involving renewable energy infrastructure",
+        "energy shortages and unreliable electricity",
+        "problems with installation and maintenance of energy systems"
+    ]
+},
 }
 
 
