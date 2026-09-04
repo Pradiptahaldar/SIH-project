@@ -9,7 +9,7 @@ text_result = "Farmers are facing crop losses due to poor irrigation."
 image_result = {
     "analysis": {
         "relevant": True,
-        "category": "Agriculture",
+        "category": "agriculture",
         "confidence": 0.91
     }
 }

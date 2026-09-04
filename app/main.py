@@ -1,4 +1,6 @@
 from fastapi import FastAPI, UploadFile, File
+import os
+import tempfile
 
 from app.processing.image import process_image
 from app.processing.audio import process_audio
@@ -30,12 +32,17 @@ async def analyze(
 
     if audio:
         audio_data = await audio.read()
-        audio_path = f"temp_{audio.filename}"
 
-        with open(audio_path, "wb") as f:
-            f.write(audio_data)
+        suffix = os.path.splitext(audio.filename or "")[1]
 
-        audio_result = process_audio(audio_path)
+        with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as temp_file:
+            temp_file.write(audio_data)
+            audio_path = temp_file.name
+
+        try:
+            audio_result = process_audio(audio_path)
+        finally:
+            os.unlink(audio_path)
 
     return analyze_challenge(
         challenge=challenge,
@@ -60,13 +67,18 @@ async def upload_image(file: UploadFile = File(...)):
 @app.post("/upload-audio")
 async def upload_audio(file: UploadFile = File(...)):
     audio_data = await file.read()
-    audio_path = f"temp_{file.filename}"
 
-    with open(audio_path, "wb") as f:
-        f.write(audio_data)
+    suffix = os.path.splitext(file.filename or "")[1]
 
-    result = process_audio(audio_path)
+    with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as temp_file:
+        temp_file.write(audio_data)
+        audio_path = temp_file.name
 
+    try:
+        result = process_audio(audio_path)
+    finally:
+        os.unlink(audio_path)
+   
     return {
         "filename": file.filename,
         "content_type": file.content_type,

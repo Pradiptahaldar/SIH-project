@@ -25,10 +25,13 @@ def fuse_multimodal(
         if isinstance(image_result, dict):
             analysis = image_result.get("analysis")
 
-            if analysis:
-                combined_information.append(
-                    f"Visual evidence: {analysis}"
-                )
+            if analysis and isinstance(analysis, dict):
+                category = analysis.get("category")
+
+                if category:
+                    combined_information.append(
+                        f"Image category: {category}"
+                    )
 
     # Audio
     if audio_result:
