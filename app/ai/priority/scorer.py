@@ -37,7 +37,8 @@ def score_severity(problem: str, category: str):
         "employment": 1,
         "education": 1,
         "infrastructure": 1,
-        "urban_development": 1
+        "urban_development": 1,
+        "energy": 2
     }
 
     score += category_weights.get(category, 0)
@@ -186,7 +187,8 @@ def score_impact(problem: str, causes: list, category: str, impact: list):
         "education": 1,
         "infrastructure": 1,
         "urban_development": 1,
-        "tribal_welfare": 1
+        "tribal_welfare": 1,
+        "energy":2
     }
 
     score += category_weights.get(category, 0)
