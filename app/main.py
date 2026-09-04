@@ -1,10 +1,13 @@
-from fastapi import FastAPI, UploadFile, File
+from fastapi import FastAPI, UploadFile, File, Form
 import os
 import tempfile
+from app.ai.similarity.detector import detect_similarity, image_to_text
 
 from app.processing.image import process_image
 from app.processing.audio import process_audio
 from app.ai.pipeline.analyzer import analyze_challenge
+
+
 
 
 app = FastAPI(
@@ -49,7 +52,37 @@ async def analyze(
         image_result=image_result,
         audio_result=audio_result
     )
+@app.post("/similarity")
+async def similarity(
+    challenge: str | None = Form(None),
+    existing_challenges: str = Form(...),
+    image: UploadFile | None = File(None)
+):
+    if existing_challenges:
+        existing_list = [
+            item.strip()
+            for item in existing_challenges.split(",")
+            if item.strip()
+        ]
+    else:
+        existing_list = []
 
+    similarity_text = challenge
+
+    if image:
+        image_data = await image.read()
+        image_result = process_image(image_data)
+        similarity_text = image_to_text(image_result)
+
+    if not similarity_text:
+        return {
+            "error": "Challenge text or image is required"
+        }
+
+    return detect_similarity(
+        challenge=similarity_text,
+        existing_challenges=existing_list
+    )
 
 @app.post("/upload-image")
 async def upload_image(file: UploadFile = File(...)):

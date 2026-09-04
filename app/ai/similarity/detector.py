@@ -9,7 +9,7 @@ model = SentenceTransformer(MODEL_NAME)
 
 def calculate_similarity(challenge_a: str, challenge_b: str):
     """
-    Calculate semantic similarity between two challenges.
+    Calculate semantic similarity between two text representations.
     """
 
     if not challenge_a or not challenge_b:
@@ -26,6 +26,7 @@ def calculate_similarity(challenge_a: str, challenge_b: str):
     )
 
     return round(float(similarity), 4)
+
 
 def detect_similarity(challenge: str, existing_challenges: list):
     if not challenge or not existing_challenges:
@@ -46,7 +47,6 @@ def detect_similarity(challenge: str, existing_challenges: list):
             best_score = score
             best_challenge = existing
 
-    # Decision thresholds
     if best_score >= 0.95:
         duplicate = True
         similar = True
@@ -63,3 +63,25 @@ def detect_similarity(challenge: str, existing_challenges: list):
         "similarity_score": best_score,
         "matched_challenge": best_challenge
     }
+
+
+def image_to_text(image_result):
+    """
+    Convert the existing image-analysis result into
+    a semantic text representation for similarity comparison.
+    """
+
+    if not image_result:
+        return ""
+
+    analysis = image_result.get("analysis")
+
+    if not isinstance(analysis, dict):
+        return ""
+
+    category = analysis.get("category")
+
+    if not category:
+        return ""
+
+    return f"Image represents a societal challenge related to {category}."
